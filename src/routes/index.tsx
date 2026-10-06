@@ -234,7 +234,7 @@ function Signup() {
   const submit = useServerFn(submitSignup);
   const [interest, setInterest] = useState<Interest | null>(null);
   const [productsSel, setProductsSel] = useState<string[]>([]);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"interest" | "first_name" | "email" | "age_range" | "country", string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [firstName, setFirstName] = useState("");
 
@@ -257,7 +257,7 @@ function Signup() {
         const k = String(issue.path[0]);
         if (!errs[k]) errs[k] = k === "interest" ? "Please choose one" : k === "age_range" ? "Please choose an age range" : issue.message;
       }
-      setErrors(errs);
+      setErrors(errs as typeof errors);
       return;
     }
     setErrors({});
@@ -413,7 +413,7 @@ function Signup() {
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: ReactNode }) {
+function Field({ label, error, children }: { label: string; error?: string | undefined; children: ReactNode }) {
   return (
     <label className="block">
       <span className="font-type text-xs uppercase tracking-widest text-muted-foreground">{label}</span>
