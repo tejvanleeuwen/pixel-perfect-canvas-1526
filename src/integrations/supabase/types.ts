@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      early_access_signups: {
+        Row: {
+          age_range: string
+          country: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          interest: string
+          pen_pal_motivation: string | null
+          stationery_products: string[]
+        }
+        Insert: {
+          age_range: string
+          country: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          interest: string
+          pen_pal_motivation?: string | null
+          stationery_products?: string[]
+        }
+        Update: {
+          age_range?: string
+          country?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          interest?: string
+          pen_pal_motivation?: string | null
+          stationery_products?: string[]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
