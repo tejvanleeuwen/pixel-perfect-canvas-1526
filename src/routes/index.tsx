@@ -108,7 +108,7 @@ function Hero() {
         <Star className="animate-star absolute -left-8 -top-8 z-10 h-20 w-20" />
         <div className="relative rotate-2 bg-paper p-3 pb-14 shadow-[var(--shadow-paper)]">
           <span className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-3" />
-          <img src={hero} alt="A young woman in a red headscarf writing a letter at a desk" width={1200} height={1504} className="aspect-[4/5] w-full object-cover" />
+          <img src={hero} alt="Portrait of the founder in a red headscarf holding a book of Grimm fairytales" width={1200} height={1800} className="aspect-[4/5] w-full object-cover" />
           <p className="absolute bottom-3 left-4 font-hand text-2xl text-ink">dear you, ♡</p>
         </div>
         <div className="stamp-edge absolute -bottom-6 -right-4 rotate-6 bg-cornflower p-4 text-center text-primary-foreground">
@@ -159,9 +159,9 @@ function Products() {
           </p>
         </div>
         <div className="relative">
-          <img src={stationery} alt="Early concept of the stationery collection: washi tape, letter paper, envelopes and stickers" width={1600} height={1104} loading="lazy" className="w-full -rotate-1 shadow-[var(--shadow-paper)]" />
+          <img src={stationery} alt="The stationery collection: letter paper, envelopes, postcards, washi tape and stickers" width={1448} height={1086} loading="lazy" className="w-full -rotate-1 shadow-[var(--shadow-paper)]" />
           <p className="absolute -bottom-5 right-4 bg-paper px-3 py-1 font-type text-xs text-muted-foreground shadow-[var(--shadow-paper)]">
-            fig. 1 — concept mock-up
+            fig. 1 — the collection
           </p>
         </div>
       </div>
@@ -190,7 +190,7 @@ function PenPal() {
     <section className="bg-navy py-24 text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-2 md:items-center">
         <div className="relative order-2 md:order-1">
-          <img src={penpal} alt="Handwritten letters and envelopes with stamps from different countries" width={1200} height={1200} loading="lazy" className="w-full rotate-1 border-8 border-paper" />
+          <img src={penpal} alt="The founder lying among postcards and letters, holding a letter in front of her face" width={1400} height={933} loading="lazy" className="w-full rotate-1 border-8 border-paper" />
           <Star className="absolute -right-5 -top-5 h-16 w-16" />
         </div>
         <div className="order-1 md:order-2">
