@@ -1,24 +1,19 @@
-# Exactly As Seen
+# Little Red Writing Hood
 
-Implement exactly the screenshot and nothing else
+De huidige, zelfstandige website staat in **[sites/little-red-writing-hood](sites/little-red-writing-hood)**. Die bevat het goedgekeurde ontwerp, alle afbeeldingen, het privébeheer, de CSV-export, inschrijvingenopslag, databasemigraties en automatische welkomstmails via Resend.
 
-This project was built with [Lovable](https://lovable.dev).
+- Website: https://littleredwritinghood.shop
+- Beheer: https://little-red-writing-hood.chirpycoot16.chatgpt.site/admin
+- Mailvoorbeeld: https://little-red-writing-hood.chirpycoot16.chatgpt.site/admin/email
 
-## Build with Lovable
+De laatste tekstwijziging in de welkomstmail is opgenomen in deze broncode. De publicatie daarvan bij Sites moet nog worden afgerond; opslaan op GitHub publiceert deze zelfstandige Site niet automatisch.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/2bad557f-98c6-4363-aaad-7ded94595b33).
+Geheime API-sleutels staan uitsluitend in Sites. Deze repository bevat geen export van de inschrijvingen of mailboxgegevens. Een broncodeback-up bevat niet de live database en instellingen van externe diensten.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+## Huidige website ontwikkelen
 
-## Development
+Ga naar `sites/little-red-writing-hood`. Gebruik Node.js 22.13 of nieuwer en installeer met `npm ci`. Zie de projectnotities in die map voor checks en hosting.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Oorspronkelijke Lovable-versie
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+De bestanden in de hoofdmap blijven de eerdere TanStack/Lovable-versie. De ontwerp- en tekstwijzigingen uit deze sessie zijn daarin eveneens opgeslagen. De huidige beheer- en mailfuncties bevinden zich in de zelfstandige Site-map hierboven.

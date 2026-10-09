@@ -1,33 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
-import { useState, type FormEvent, type ReactNode } from "react";
-import hero from "@/assets/hero.jpg";
-import stationery from "@/assets/stationery-collage.png";
-import penpal from "@/assets/penpal.jpg";
-import feltStar from "@/assets/felt-star.webp";
-import { signupSchema, submitSignup } from "@/lib/signup.functions";
-import { SignupSuccess, SocialLinks } from "@/components/signup-success";
+"use client";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Little Red Writing Hood | Join the First Chapter" },
-      {
-        name: "description",
-        content:
-          "Snail mail, lovely finds and stationery ideas. Follow Little Red Writing Hood and sign up for future email updates.",
-      },
-      { property: "og:title", content: "Little Red Writing Hood | Join the First Chapter" },
-      {
-        property: "og:description",
-        content: "Stickers, washi tape, letter paper, envelopes and new ways to connect through letters.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
+import { useState, type FormEvent, type ReactNode } from "react";
+const hero = "/assets/hero.jpg";
+const stationery = "/assets/stationery-collage.png";
+const penpal = "/assets/penpal.jpg";
+const feltStar = "/assets/felt-star.webp";
+import { signupSchema, submitSignup } from "@/lib/signup";
+import { SignupSuccess, SocialLinks } from "@/components/signup-success";
 
 function Star({ className = "", fabric = false }: { className?: string; fabric?: boolean }) {
   if (!fabric) {
@@ -61,7 +40,7 @@ function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="font-type text-xs uppercase tracking-[0.25em] text-cherry">{children}</p>;
 }
 
-function Index() {
+export default function Home() {
   return (
     <main className="overflow-x-hidden">
       <Nav />
@@ -243,7 +222,7 @@ const productOptions = [
 ] as const;
 
 function Signup() {
-  const submit = useServerFn(submitSignup);
+  const submit = submitSignup;
   const [interest, setInterest] = useState<Interest | null>(null);
   const [productsSel, setProductsSel] = useState<string[]>([]);
   const [errors, setErrors] = useState<Partial<Record<"interest" | "first_name" | "email" | "age_range" | "country", string>>>({});

@@ -1,0 +1,2 @@
+ALTER TABLE `early_access_signups` ADD `welcome_status` text DEFAULT 'pending' NOT NULL;--> statement-breakpoint
+ALTER TABLE `early_access_signups` ADD `notification_status` text DEFAULT 'pending' NOT NULL;

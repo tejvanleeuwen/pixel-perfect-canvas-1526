@@ -1,0 +1,26 @@
+import { build } from 'esbuild';
+import { DatabaseSync } from 'node:sqlite';
+import { readFileSync, readdirSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { resolve } from 'node:path';
+import assert from 'node:assert/strict';
+
+await build({entryPoints:['lib/signup-handler.ts'],outfile:'.sites-runtime/tests/signup.mjs',bundle:true,platform:'node',format:'esm'});
+const {handleSignup}=await import(pathToFileURL(resolve('.sites-runtime/tests/signup.mjs')));
+const sqlite=new DatabaseSync(':memory:');
+for(const file of readdirSync('drizzle').filter(name=>name.endsWith('.sql')).sort()) sqlite.exec(readFileSync('drizzle/'+file,'utf8'));
+const db={prepare(sql){return {bind(...args){return {async run(){return sqlite.prepare(sql).run(...args)}}}}}};
+const data={first_name:'Preview test',email:'TEST@example.com',age_range:'25-30',country:'Netherlands',interest:'both',stationery_products:['letter_paper'],pen_pal_motivation:'Books and letters'};
+const request=(body,origin='https://site.test')=>new Request('https://site.test/api/signup',{method:'POST',headers:{'content-type':'application/json',origin},body:JSON.stringify(body)});
+assert.equal((await handleSignup(request(data),db)).status,200);
+const saved=sqlite.prepare('SELECT * FROM early_access_signups').get();
+assert.equal(saved.email,'test@example.com');
+assert.equal(saved.consent_version,'email-updates-2026-10-09');
+assert.deepEqual(JSON.parse(saved.stationery_products),['letter_paper']);
+assert.equal((await handleSignup(request(data),db)).status,200);
+assert.equal(sqlite.prepare('SELECT count(*) AS n FROM early_access_signups').get().n,1);
+assert.equal((await handleSignup(request({...data,email:'invalid'}),db)).status,400);
+assert.equal((await handleSignup(request(data,'https://other.test'),db)).status,403);
+assert.equal((await handleSignup(request(data),{prepare(){throw Error('storage unavailable')}})).status,503);
+sqlite.close();
+console.log('Signup checks passed: persisted fields, consent, duplicates, validation, origin check, storage failure.');

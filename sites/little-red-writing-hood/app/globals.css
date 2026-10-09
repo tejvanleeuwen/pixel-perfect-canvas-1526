@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
-@source "../src";
+@source "../app";
+@source "../components";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -111,15 +112,15 @@
   isolation: isolate;
   opacity: 0.9;
   background-color: var(--tape-colour);
-  mask: url("./assets/paper-tape.webp") center / 100% 100% no-repeat;
-  -webkit-mask: url("./assets/paper-tape.webp") center / 100% 100% no-repeat;
+  mask: url("/assets/paper-tape.webp") center / 100% 100% no-repeat;
+  -webkit-mask: url("/assets/paper-tape.webp") center / 100% 100% no-repeat;
 }
 
 .decorative-tape::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("./assets/paper-tape.webp") center / 100% 100% no-repeat;
+  background: url("/assets/paper-tape.webp") center / 100% 100% no-repeat;
   filter: grayscale(1);
   mix-blend-mode: multiply;
   opacity: 0.55;
